@@ -7,16 +7,18 @@ function Card() {
     const [people, setPeople] = useState([])
 
     useEffect(() => {
-      db.collection('people').onSnapshot(snapshot => {
+      const unsubscribe = db.collection('people').onSnapshot(snapshot => {
         const p = snapshot.docs.map(doc => doc.data());
         setPeople(p);
-        console.log(p)
       });
+
+      return () => {
+        unsubscribe()
+      }
     }, []);
 
   return (
     <div className="card-container"> 
-        <h4>Tinder Cards</h4>
         {/* {tCard} */}
         <div className="tinderCards__cardContainer">
           {people.map(person => {
@@ -30,7 +32,6 @@ function Card() {
                       className="card"
                   >
                   <h3>{person.name}</h3>
-                  {console.log(person.name)}
                   </div>
               </TinderCard>
           })}

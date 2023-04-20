@@ -4,6 +4,7 @@ import Header from './Header';
 import ReactDOM from "react-dom/client";
 import { Switch, Route } from "react-router-dom";
 import Card from './Card';
+import SwipeButtons from './SwipeButtons';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </Route>
         <Route exact path = "/">
           <Card />
+          <SwipeButtons />
         </Route>
       </Switch>
       

@@ -15,6 +15,11 @@ function Card() {
       return () => {
         unsubscribe()
       }
+      // when component mounts this use effect creates a listener 
+      // as the user swipes through the collection changes 
+      // we need to unsubscribe after each swipe so we don't have 100's 
+      // of listeners 
+      // this is called a cleanup function ^^
     }, []);
 
   return (
@@ -33,7 +38,7 @@ function Card() {
                   >
                   <h3>{person.name}</h3>
                   </div>
-              </TinderCard>
+            </TinderCard>
           })}
         </div>
     </div>
